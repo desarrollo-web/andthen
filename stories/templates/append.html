@@ -1,0 +1,9 @@
+{%extends "base.html"%}
+{%block content%}
+{%include "_story.html"%}
+    <form action="{%url show_story story.pk%}" method="post">
+        {%csrf_token%}
+        {{form.as_p}}
+        <p><input type="submit" value="Add to story"/></p>
+    </form>
+{%endblock%}

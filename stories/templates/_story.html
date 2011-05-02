@@ -1,0 +1,19 @@
+<h2>Begun {{story.created_at|timesince}} ago</h2>
+<a href="{%url read_story story.pk%}">Read in a single paragraph</a>
+{%if not full%}
+<ol>
+    {%for paragraph in story.paragraphs.all%}
+    <li>
+        {{paragraph.content}}
+        (created <time datetime="{{paragraph.created_at}}">{{paragraph.created_at|timesince}}</time> ago)
+    </li>
+    {%endfor%}
+</ol>
+{%else%}
+<p>
+    {{story.as_paragraph|linebreaks}}
+</p>
+{%endif%}
+{%if story.is_open%}
+    <a href="{%url continue_story story.pk%}">Continue</a>
+{%endif%}

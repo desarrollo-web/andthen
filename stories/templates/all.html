@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+
+{%block content%}
+<h2>
+    {%if all%}
+        All stories
+    {%else%}
+        {%if open%}
+            Open stories
+        {%else%}
+            Finished stories
+        {%endif%}
+   {%endif%}
+</h2>
+<ul>
+    {%for story in stories%}
+        <li>{{story.first_paragraph|truncatewords:10}}</li>
+        <a href="{%if story.is_open%}
+                    {%url continue_story story.pk%}"> Continue...
+                {%else%}
+                    {%url read_story story.pk%}"> Read
+                {%endif%}
+                </a>
+
+    {%endfor%}
+</ul>
+{%endblock%}

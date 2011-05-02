@@ -25,6 +25,13 @@
             <a href="{%url read%}">Read</a>
         </nav>
     </header>
+    {%if updated_stories%} 
+    <ul>
+        {% for story in  updated_stories%}
+            <li>Someone has added a new paragraph to <a href="{%url show_story story.pk %}">{{story|truncatewords:4}}</a></li>
+        {% endfor %}
+        </ul>
+    {%endif%}
     {%block content%}
     {%endblock content%}
 </body>

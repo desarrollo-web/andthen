@@ -5,7 +5,7 @@
     {%for paragraph in story.paragraphs.all%}
     <li>
         {{paragraph.content}}
-        (created <time datetime="{{paragraph.created_at}}">{{paragraph.created_at|timesince}}</time> ago)
+        (added <time datetime="{{paragraph.created_at}}">{{paragraph.created_at|timesince}}</time> ago)
     </li>
     {%endfor%}
 </ol>

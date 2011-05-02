@@ -14,14 +14,16 @@
 </h2>
 <ul>
     {%for story in stories%}
-        <li>{{story.first_paragraph|truncatewords:10}}</li>
+
+        <li>{{story.first_paragraph|truncatewords:10}}
+        <time>(created {{story.created_at|timesince}} ago)</time>
         <a href="{%if story.is_open%}
                     {%url continue_story story.pk%}"> Continue...
                 {%else%}
                     {%url read_story story.pk%}"> Read
                 {%endif%}
-                </a>
-
+            </a>
+         </li>
     {%endfor%}
 </ul>
 {%endblock%}

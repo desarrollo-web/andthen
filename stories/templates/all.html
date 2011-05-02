@@ -18,7 +18,7 @@
         <li>{{story.first_paragraph|truncatewords:10}}
         <time>(created {{story.created_at|timesince}} ago)</time>
         <a href="{%if story.is_open%}
-                    {%url continue_story story.pk%}"> Continue...
+                    {%url continue_story story.pk%}"> And then...
                 {%else%}
                     {%url read_story story.pk%}"> Read
                 {%endif%}

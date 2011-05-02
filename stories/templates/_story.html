@@ -1,5 +1,11 @@
 <h2>Begun {{story.created_at|timesince}} ago</h2>
-<a href="{%url read_story story.pk%}">Read in a single paragraph</a>
+<a href="{%if full%}{%url show_story story.pk%}{%else%}{%url read_story story.pk%}{%endif%}">
+    {%if full%}
+    Read story line by line
+    {%else%}
+    Read as paragraph
+    {%endif%}
+</a>
 {%if not full%}
 <ol>
     {%for paragraph in story.paragraphs.all%}
@@ -15,5 +21,5 @@
 </p>
 {%endif%}
 {%if story.is_open%}
-    <a href="{%url continue_story story.pk%}">Continue</a>
+    <a href="{%url continue_story story.pk%}">And then...</a>
 {%endif%}

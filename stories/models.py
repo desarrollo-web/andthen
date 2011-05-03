@@ -23,9 +23,6 @@ class Story(models.Model):
     def __unicode__(self):
         return self.first_paragraph().__unicode__()
 
-    def latest_submission(self):
-        self.paragraphs.latest('created_at')
-
 class Paragraph(models.Model):
     content = models.TextField(max_length = 420)
     story = models.ForeignKey(Story, related_name="paragraphs", null=True, blank=True)

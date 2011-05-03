@@ -17,10 +17,6 @@ def _save_paragraph(request, story=None, template=None):
         if p.story.should_close():
             p.story.is_open = False
             p.story.save()
-        if request.session.get('submissions', None):
-            request.session['submissions'].append((p))
-        else:
-            request.session['submissions'] = [p,]
         return redirect(p.story)
     else:
         return render_to_response(template, {'form': form, 'story':story}, context_instance=RequestContext(request))
